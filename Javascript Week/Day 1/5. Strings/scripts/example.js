@@ -14,11 +14,9 @@ console.log(upperText); // Output: HELLO, WORLD!
 const lowerText = originalText.toLowerCase();
 console.log(lowerText); // Output: hello, world!
 
-// find the index of a substring
 const substringIndex = originalText.indexOf('World');
 console.log(substringIndex); // Output: 7
 
-// replace a substring with another string
 const replacedText = originalText.replace('World', 'JavaScript');
 console.log(replacedText); // Output: Hello, JavaScript!
 
