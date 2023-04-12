@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Data Types Example</title>
 </head>
 <body>
     <script>
@@ -51,6 +51,16 @@
 
         const myFunction = function() { // functions can be also assigned to constants/variables
             alert('I\'m also a function'); // notice the escape character \ before the '
+        }
+
+        // functions can have internal variables called 'this'
+        const myFunctionObject = function(a) {
+            if (this.a == null) {
+                this.a = a;
+            } else {
+                this.a += a;
+            }
+            return this.a;
         }
 </script>
 </body>
