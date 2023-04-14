@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <div id="myWord">My word here</div>
+    <div id="myOtherWord">My Other word here</div>
+    <button onclick="onButtonPress()">Change something</button>
+</head>
+<body>
+    <script>
+        // change every 1 second
+        let myBool = false;
+
+        const myFunction = () => { // arrow function
+            if (myBool) {
+                document.getElementById("myWord").innerHTML = "I am forever changed...";
+            } else {
+                document.getElementById("myWord").innerHTML = "Things will never be the same...";
+            }
+            myBool = !myBool;
+        }
+
+        let counter = 1;
+        const onButtonPress = function() {
+            document.getElementById("myOtherWord").innerHTML = "You pressed the button " + counter + " times";
+            counter++;
+        }
+
+        setInterval(myFunction, 1000);
+    </script>
+</body>
+</html>

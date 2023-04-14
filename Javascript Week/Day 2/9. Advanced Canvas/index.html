@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Shapes</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+  <script>
+    class Shape {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+      }
+
+      draw(ctx) {
+        ctx.fillStyle = this.color;
+      }
+
+      move(dx, dy) {
+        this.x += dx;
+        this.y += dy;
+      }
+    }
+
+    class Circle extends Shape {
+      constructor(x, y, color, radius) {
+        super(x, y, color);
+        this.radius = radius;
+      }
+
+      draw(ctx) {
+        super.draw(ctx);
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+    }
+
+    class Rectangle extends Shape {
+      constructor(x, y, color, width, height) {
+        super(x, y, color);
+        this.width = width;
+        this.height = height;
+      }
+
+      draw(ctx) {
+        super.draw(ctx);
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+    }
+
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function randomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function createRandomShape() {
+      const x = randomInt(0, canvas.width);
+      const y = randomInt(0, canvas.height);
+      const color = randomColor();
+
+      if (Math.random() < 0.5) {
+        const radius = randomInt(10, 50);
+        return new Circle(x, y, color, radius);
+      } else {
+        const width = randomInt(10, 50);
+        const height = randomInt(10, 50);
+        return new Rectangle(x, y, color, width, height);
+      }
+    }
+
+    let shapes = [];
+    let canvas, ctx;
+
+    // We basically made a really simple p5.js ourselves!
+    function draw() {
+    //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const shape of shapes) {
+        shape.draw(ctx);
+      }
+    }
+
+    function update() {
+      const shape = createRandomShape();
+      shape.move(randomInt(-5, 5), randomInt(-5, 5));
+      shapes.push(shape);
+      if (shapes.length > 50) {
+        shapes.shift(); // Remove the oldest shape to keep the number of shapes manageable
+      }
+      draw();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      canvas = document.getElementById('canvas');
+      ctx = canvas.getContext('2d');
+      setInterval(update, 10); // Update the canvas every 500ms
+    });
+  </script>
+</head>
+<body>
+  <canvas id="canvas" width="800" height="600"></canvas>
+</body>
+</html>
