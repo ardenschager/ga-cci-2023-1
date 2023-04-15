@@ -30,13 +30,16 @@ function changeColorOverTime() {
     const endColor = chroma.random();
     console.log(startColor, endColor);
     const targetX = Math.random() * canvas.width - square.size;
-    const targetY = Math.random() * canvas.width - square.size;
+    const targetY = Math.random() * canvas.height - square.size;
+    const size = Math.random() * 100 + 50;
 
     anime({
         targets: square, // targets an object
         duration: 1000,
+        easing: 'easeInOutQuad',
         x: targetX,
         y: targetY,
+        size: size,
         update: (anim) => {
             square.color = startColor.interpolate(endColor, anim.progress * 0.01).hex();
             square.draw();
