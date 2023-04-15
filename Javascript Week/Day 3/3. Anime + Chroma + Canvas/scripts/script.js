@@ -42,7 +42,7 @@ function changeColorOverTime() {
             square.draw();
         },
         changeComplete: (anim) => {
-            changeColorOverTime();
+            changeColorOverTime(); // loop the animation
         }
     });
 }
