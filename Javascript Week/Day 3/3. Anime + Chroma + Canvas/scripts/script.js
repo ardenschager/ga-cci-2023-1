@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => { // wait for the page to lo
     canvas = document.getElementById('myCanvas');
     ctx = canvas.getContext('2d');
     square = new Square(50, 50, 100, chroma.random().hex()); // chroma.random().hex() returns a random color in hex format
-
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     // start the color change animation
     changeColorOverTime();
 });
@@ -42,6 +43,10 @@ function changeColorOverTime() {
         size: size,
         update: (anim) => {
             square.color = startColor.interpolate(endColor, anim.progress * 0.01).hex();
+            // fill the canvas with black
+            // ctx.fillStyle = 'black';
+            // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
             square.draw();
         },
         changeComplete: (anim) => {
