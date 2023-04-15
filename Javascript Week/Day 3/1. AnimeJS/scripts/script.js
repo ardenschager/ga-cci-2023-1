@@ -10,9 +10,11 @@ function moveButtonRandomly() {
     const targetY = randomInt(0, windowHeight - button.clientHeight);
 
     anime({
-        targets: button,
+        targets: button, // animating stuff within button
+        // members of the button object that we want to animate
         left: targetX,
         top: targetY,
+        // anime.js options
         duration: 1000,
         easing: 'easeOutElastic(1, .5)'
     });
