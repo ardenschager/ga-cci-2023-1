@@ -1,4 +1,4 @@
-// This is an object with functions
+// this is an object with functions
 const pet = {
     name: 'Fido',
     species: 'dog',
@@ -16,8 +16,8 @@ const pet = {
     },
 }
 
-// But what if you want to make several objects? You can use a class.
-// This is a 'blueprint' for a person object
+// but what if you want to make several objects? You can use a class.
+// this is a 'blueprint' for a person object
 class Person {
   constructor(name, age) {
     this.name = name;

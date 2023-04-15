@@ -1,10 +1,9 @@
-function randomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
+function changeCheckboxColors() {
+    const checkboxes = document.getElementsByClassName('checkbox-container');
+    for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].style.accentColor = randomColor();
+        checkboxes[i].checked = Math.random() >= 0.5;
     }
-    return color;
 }
 
 const NUM_CHECKS = 1015;
@@ -17,14 +16,6 @@ for (let i = 0; i < NUM_CHECKS; i++) {
     checkbox.checked = Math.random() >= 0.5;
     checks.push(checkbox);
     document.body.appendChild(checkbox);
-}
-
-function changeCheckboxColors() {
-    const checkboxes = document.getElementsByClassName('checkbox-container');
-    for (let i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].style.accentColor = randomColor();
-        checkboxes[i].checked = Math.random() >= 0.5;
-    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {

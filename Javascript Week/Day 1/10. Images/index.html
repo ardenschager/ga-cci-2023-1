@@ -13,16 +13,16 @@
     <button id="changeImageButton">Change Image</button>
 
     <script>
-        // Get the button and image elements by their ID
+        // get the button and image elements by their ID
         const changeImageButton = document.getElementById('changeImageButton');
         const imageElement = document.getElementById('image');
 
-        // Create a flag to track the current image
+        // create a flag to track the current image
         let isImage1 = true;
 
-        // Add a click event listener to the button
+        // add a click event listener to the button
         changeImageButton.addEventListener('click', () => {
-            // Change the image source and alt text based on the flag
+            // change the image source and alt text based on the flag
             if (isImage1) {
                 imageElement.src = 'images/image2.gif';
                 imageElement.alt = 'Image 2';
@@ -31,7 +31,7 @@
                 imageElement.alt = 'Image 1';
             }
 
-            // Toggle the flag
+            // toggle the flag
             isImage1 = !isImage1;
         });
     </script>
